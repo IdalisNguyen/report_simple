@@ -38,12 +38,15 @@
         .lead { font-size: 17px; }
         .vi { color: #3d4f63; }
         ul {
-            display: inline-block;
-            text-align: left;
-            margin: 8px auto 0;
-            padding-left: 18px;
+            display: block !important;
+            text-align: left !important;
+            max-width: 760px;
+            margin: 16px auto !important;
+            padding-left: 1.3em;
         }
-        li h3, li p { text-align: left; }
+        li, li h3, li p {
+            text-align: left !important;
+        }
         li { margin: 0 0 14px; }
         .shot {
             background: #fff;
@@ -63,7 +66,7 @@
             font-size: 13px;
         }
     </style>
-<div class="page" style="max-width:920px;margin-left:auto;margin-right:auto;padding:32px 20px 48px;text-align:center;">
+<div class="page" style="max-width:920px;margin-left:auto;margin-right:auto;padding:32px 20px 48px;">
     <h1>Vietnam Cash Receipt &amp; Payment Voucher</h1>
     <p class="vi lead"><strong>Phiếu Thu &amp; Phiếu Chi Việt Nam</strong></p>
     <p class="lead">Print Cash Receipt and Cash Payment Vouchers directly from Odoo Accounting.</p>
@@ -72,15 +75,15 @@
     <p class="vi">Module cho phép người dùng cấu hình mã Phiếu Thu/Phiếu Chi theo sổ nhật ký tiền mặt và in phiếu trực tiếp từ hóa đơn, thanh toán khách hàng/nhà cung cấp và sao kê ngân hàng.</p>
 
     <h2>Main Features</h2>
-    <ul>
-        <li><h3>Print Cash Receipt Vouchers</h3></li>
-        <li><h3>Print Cash Payment Vouchers</h3></li>
+    <ul style="display:block;text-align:left !important;max-width:760px;margin:16px auto;padding-left:1.3em;">
+        <li><h3 style="text-align:left !important;margin:0 0 4px;">Print Cash Receipt Vouchers</h3></li>
+        <li><h3 style="text-align:left !important;margin:0 0 4px;">Print Cash Payment Vouchers</h3></li>
         <li>
-            <h3>Configure receipt and payment voucher codes by cash journal</h3>
+            <h3 style="text-align:left !important;margin:0 0 4px;">Configure receipt and payment voucher codes by cash journal</h3>
             Set the voucher numbering on each cash journal.
         </li>
         <li>
-            <h3>Print directly from customer invoices</h3>
+            <h3 style="text-align:left !important;margin:0 0 4px;">Print directly from customer invoices</h3>
             Open an invoice and print the receipt or payment voucher.
         </li>
     </ul>
@@ -95,9 +98,9 @@
     </div>
     <p class="caption">Phiếu thu, mẫu số 01-TT.</p>
 
-    <ul>
+    <ul style="display:block;text-align:left !important;max-width:760px;margin:16px auto;padding-left:1.3em;">
         <li>
-            <h3>Print from customer and vendor payments</h3>
+            <h3 style="text-align:left !important;margin:0 0 4px;">Print from customer and vendor payments</h3>
             Print the voucher from a posted customer or vendor payment.
         </li>
     </ul>
@@ -107,13 +110,13 @@
     </div>
     <p class="caption">Trên thanh toán, bấm In phiếu thu chi.</p>
 
-    <ul>
+    <ul style="display:block;text-align:left !important;max-width:760px;margin:16px auto;padding-left:1.3em;">
         <li>
-            <h3>Print from bank statements</h3>
+            <h3 style="text-align:left !important;margin:0 0 4px;">Print from bank statements</h3>
             Print the voucher from a bank statement line.
         </li>
         <li>
-            <h3>Integrated with Odoo Accounting</h3>
+            <h3 style="text-align:left !important;margin:0 0 4px;">Integrated with Odoo Accounting</h3>
             Use the vouchers from invoices, payments, and bank statements already in Accounting.
         </li>
     </ul>
