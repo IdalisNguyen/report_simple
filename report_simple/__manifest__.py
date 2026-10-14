@@ -12,8 +12,8 @@ Configure receipt and payment voucher codes on cash journals and print vouchers 
 In phiếu thu và phiếu chi trực tiếp từ Odoo Accounting.
 Cấu hình mã phiếu thu/phiếu chi theo sổ nhật ký tiền mặt và in từ hóa đơn, thanh toán khách hàng/nhà cung cấp và sao kê ngân hàng.
 """,
-    'author': 'support@bizapps.vn',
-    'website': 'https://bizapps.vn/ung-dung',
+    'author': "Idalis Nguyen",
+    'website': 'https://www.odoo.com/apps',
     'price': 149.0,
     'currency': 'USD',
     'images': [
