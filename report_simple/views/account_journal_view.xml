@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data>
+		<record id="view_account_journal_form_print_report" model="ir.ui.view">
+            <field name="name">account.journal.form.print.report</field>
+            <field name="model">account.journal</field>
+			<field name="inherit_id" ref="account.view_account_journal_form"/>
+            <field name="arch" type="xml">
+            	<xpath expr="//page[@id='inbound_payment_settings']" position="inside">
+					<group>
+						<group>
+							<field name="is_print" invisible="type != 'cash'" />
+							<field name="rule_by" invisible="not is_print" required="is_print"/>
+							<field name="sequence_receipt_id" invisible="not is_print" required="is_print"/>
+							<field name="sequence_payment_id" invisible="not is_print" required="is_print"/>
+						</group>
+						<group>
+							<field name="director" invisible="not is_print"/>
+							<field name="accountant" invisible="not is_print"/>
+							<field name="repaired_by" invisible="not is_print"/>
+							<field name="cashier" invisible="not is_print"/>
+						</group>
+					</group>
+				</xpath>
+				<field name="company_id" position="after">
+            		<field name="number_journal"/>
+            	</field>
+            </field>
+       	</record>
+	</data>
+</odoo>

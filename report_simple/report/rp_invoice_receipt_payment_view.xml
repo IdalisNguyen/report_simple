@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<template id="rp_invoice_payment">
+		<t t-call="web.html_container">
+			<t t-foreach="list_payment" t-as="o">
+               	<t t-call="biz_voucher_report_simple.report_voucher_payment_document"/>
+			</t>
+
+			<t t-foreach="list_move" t-as="o">
+               	<t t-call="biz_voucher_report_simple.print_receipts_pay_slip_document"/>
+			</t>
+		</t>
+	</template>
+
+</odoo>

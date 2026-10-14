@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="report_voucher_invoice_document">
+        <t t-call="web.internal_layout">
+        	<div class="page" style="font-family: 'Times New Roman' !important; font-size: 14px;line-height: 20px;">
+            	<div class="row">
+            		<div class="col-xs-7">
+                		<img t-if="o.company_id.logo" t-att-src="image_data_uri(o.company_id.logo)"  style="max-height: 75px;"/>
+            			<div><b><span t-esc="name_company(o.company_id)"/></b></div>
+            			<div><span t-esc="address(o.company_id)"/></div>
+            		</div>
+            		<div class="col-xs-5 text-center">
+            			<b>Mẫu số: <t t-if="o.payment_type == 'inbound'">01</t><t t-if="o.payment_type == 'outbound'">02</t>-TT</b><br/>
+            			<t t-if="o.journal_id.rule_by == 'determination_15'">
+            				<i>(Ban hành theo QĐ số 15/2006/QĐ-BTC<br/>ngày 20/03/2006 của Bộ trưởng BTC)</i>
+            			</t>
+            			<t t-if="o.journal_id.rule_by == 'curcular_133'">
+            				<i>(Ban hành theo Thông tư số 133/2016/<b></b>TT-BTC<br/>ngày 26/08/2016 Của Bộ Tài chính)</i>
+            			</t>
+            			<t t-if="o.journal_id.rule_by == 'curcular_200'">
+            				<i>(Ban hành theo TT số 200/2014/QĐ-BTC<br/>ngày 22/12/2014 của Bộ trưởng BTC)</i>
+            			</t>
+            			<t t-if="o.journal_id.rule_by == 'determination_48'">
+            				<i>(Ban hành theo QĐ số: 48/2006/QĐ-BTC<br/>ngày 14/9/2006 của Bộ trưởng BTC)</i>
+            			</t>
+            		</div>
+            	</div>
+            	<div class="row">
+            		<div class="col-xs-3"><br/></div>
+            		<div class="col-xs-6 text-center">
+            			<div style="font-size: 28px;"><b><span t-esc="get_print_name(o)"/></b></div>
+            			<div><i><b><span t-esc="get_date_str(o.date)"/></b></i></div>
+            		</div>
+            		<div class="col-xs-3">
+            			<div>
+            				<div>Quyển số: <span t-esc="get_journal(o)"/></div>
+                			<div>Số: <span t-esc="o.number_sequence"/></div>
+                			<div>Nợ: <span t-esc="get_account_debit(o)"/></div>
+                			<div>Có: <span t-esc="get_account_credit(o)"/></div>
+            			</div>
+            		</div>
+            	</div>
+            	
+            	<div class="row">
+                	<div class="box_boss">
+            			<table style="width: 645px; float:left;">
+                			<tr>
+                				<td><span t-esc="person_title(o.payment_type)"/>: <span style="margin-left:10px;" t-esc="o.payer or o.partner_id.name"/></td>
+                			</tr>
+                			<tr>
+                				<td>Địa chỉ: <span style="margin-left:10px;" t-esc="address(o.partner_id)"/></td>
+                			</tr>
+                			<tr>
+                				<td>Lý do <t t-if="o.payment_type == 'inbound'">nộp</t><t t-if="o.payment_type == 'outbound'">chi</t>: <t style="margin-left:10px;" t-esc="o.ref"/></td>
+                			</tr>
+                			<tr>
+                				<td>Số tiền:<span  style="margin-left:10px;font-weight: bold;" t-esc="convert_to_money(abs(o.amount))"/> <b><t t-esc="get_currency(o.company_id, o.journal_id)"/></b></td>
+                				
+                			</tr>
+                			<tr>
+                				<td><div style="height:100%; float: left; margin-right: 10px;">Viết bằng chữ:</div> <b><span t-esc="amount_to_text(abs(o.amount))"/></b></td>
+                			</tr>
+                			<tr>
+                				<td>Kèm theo: <span style="margin-left: 10px;"><t t-if="o.including"><span t-esc="o.including"/></t><t t-else="">...............................</t> chứng từ gốc</span></td>
+                			</tr>
+                		</table>
+        			</div>
+            	</div>
+            	<div class="row">
+            		<div class="col-xs-7"><br/></div>
+            		<div class="col-xs-5 text-center"><i><span style="margin-bottom: 10px;" t-esc="get_date_print()"/></i></div>
+            	</div>
+            	<div class="row" style="margin-bottom: 10px;">
+            		<table width="100%">
+            			<tr>
+            				<td width="20%" class="text-center"><b>Giám đốc</b></td>
+            				<td width="20%" class="text-center"><b>Kế toán trưởng</b></td>
+            				<td width="20%" class="text-center"><b><t t-if="o.payment_type == 'inbound'">Người nộp tiền</t><t t-if="o.payment_type == 'outbound'">Thủ quỹ</t></b></td>
+            				<td width="20%" class="text-center"><b>Người lập phiếu</b></td>
+            				<td width="20%" class="text-center"><b><t t-if="o.payment_type == 'inbound'">Thủ quỹ</t><t t-if="o.payment_type == 'outbound'">Người nhận tiền</t></b></td>
+            			</tr>
+            			<tr>
+            				<td class="text-center"><i>(Ký, họ tên, đóng dấu)</i><br/><br/><br/><br/>
+            					<t t-if="o.journal_id.director"><span t-esc="o.journal_id.director.name"/></t>
+            				</td>
+            				<td class="text-center"><i>(Ký, họ tên)</i><br/><br/><br/><br/>
+            					<t t-if="o.journal_id.accountant"><span t-esc="o.journal_id.accountant.name"/></t>
+            				</td>
+            				<td class="text-center"><i>(Ký, họ tên)</i><br/><br/><br/><br/>
+	                			<t t-if="o.payment_type == 'outbound'"><t t-if="o.journal_id.cashier"><span t-esc="o.journal_id.cashier.name"/></t>
+	                			</t>
+	                		</td>
+            				<td class="text-center"><i>(Ký, họ tên)</i><br/><br/><br/><br/>
+            					<t t-if="o.journal_id.repaired_by"><span t-esc="o.journal_id.repaired_by.name"/></t>
+            				</td>
+            				<td class="text-center"><i>(Ký, họ tên)</i><br/><br/><br/><br/>
+            					<t t-if="o.payment_type == 'inbound'"><t t-if="o.journal_id.cashier"><span t-esc="o.journal_id.cashier.name"/></t></t>
+            				</td>
+            			</tr>
+            		</table>
+            	</div>
+            	<div style="flex-wrap: wrap;margin-right: -15px;margin-left: -15px;"><div style="height:100%; float: left; margin-right: 30px;">Đã nhận đủ số tiền (Viết bằng chữ):</div><div style="padding: 0 10px;float: left;width: 500px;"><t t-esc="amount_to_text(abs(o.amount))"/>.</div></div>
+        		<div class="row"><div class="box_boss text-right" style="margin-top: 20px;font-size: 14px;"><span style="text-transform: lowercase;" t-esc="get_hours_print()"/></div></div>
+            </div>
+        	<style>
+        		.col-xs-1, .col-xs-2, .col-xs-3, .col-xs-4, .col-xs-5, .col-xs-6, .col-xs-7, .col-xs-8, .col-xs-9, .col-xs-10, .col-xs-11, .col-xs-12 {
+				  position: relative;
+				  float: left;
+				}
+				.col-xs-9 {
+				  width: 75%;
+				}
+				.col-xs-8 {
+				  width: 66.66666667%;
+				}
+				.col-xs-7 {
+				  width: 58.33333333%;
+				}
+				.col-xs-6 {
+				  width: 50%;
+				}
+				.col-xs-5 {
+				  width: 41.66666667%;
+				}
+				.col-xs-4 {
+				  width: 33.33333333%;
+				}
+				.col-xs-3 {
+				  width: 25%;
+				}
+        		.text-center {
+        			text-align: center;
+        		}
+        		.text-right {
+        			text-align: right;
+        		}
+        		.box_boss {
+				    float: left;
+				    width: 100%;
+				    position: relative;
+				}
+        		.loan {
+				        position: relative;
+				    top: 0;
+				    width: 250px;
+				    text-align: -webkit-left;
+				    left: 100%;
+				    transform: translate(-100%);
+				}
+				    width: 100%;
+				}
+				.loan table td{
+				    text-align: right;
+				}
+	        </style>
+        </t>
+    </template>
+    
+    <template id="report_voucher_invoice">
+        <t t-call="web.html_container">
+            <t t-foreach="payments" t-as="o"> 
+                <t t-call="biz_voucher_report_simple.report_voucher_invoice_document" t-lang="lang"/>
+            </t>
+        </t>
+    </template>
+    <report
+            id="account_report_voucher_invoice"
+            model="account.move"
+            string="Voucher"
+            report_type="qweb-pdf"
+            name="biz_voucher_report_simple.report_voucher_invoice"
+            file="biz_voucher_report_simple.report_voucher_invoice"
+            print_report_name="(object._get_printed_report_name())"
+            menu="False"
+            paperformat="biz_voucher_report_simple.paperformat_a5_landscape"
+        />
+        
+    <template id="report_voucher_invoice_popup">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="o">
+                <t t-call="biz_voucher_report_simple.report_voucher_invoice_document" t-lang="lang"/>
+            </t>
+        </t>
+    </template>
+        
+</odoo>

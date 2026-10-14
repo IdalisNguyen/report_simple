@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+       <record id="view_move_form_voucher" model="ir.ui.view">
+        	<field name="name">view.move.form.voucher</field>
+        	<field name="model">account.move</field>
+        	<field name="inherit_id" ref="account.view_move_form"/>
+        	<field name="arch" type="xml">
+        		<div name="button_box" position="inside">
+        			<button name="button_payments" class="oe_stat_button" type="object" icon="fa-book">
+                        <field string="Payments" name="payment_count" widget="statinfo"/>
+                        <field name="payment_ids" invisible="1"/>
+                    </button>
+        		</div>
+        		<field name="state" position="before">
+        			<button name="print_vourcher" 
+						string="Cash Receipt &amp; Payment Voucher" 
+						invisible="not payment_ids"
+						type="object" class="oe_highlight"/>
+        		</field>
+        	</field>
+        </record>
+        
+    </data>
+</odoo>

@@ -1,0 +1,61 @@
+.top-right-corner .bottom-line{
+	position: relative;
+}
+.top-right-corner .bottom-line p{
+	display: inline-block;
+	margin: 0;
+}
+
+.top-right-corner .bottom-line .line-dotted{
+    position: absolute;
+    margin-left: 5px;
+    bottom: 5px;
+    border-bottom: 1px dotted ;
+    line-height: 15px;
+    width: 150px;
+}
+.top-right-corner .line-dotted.bold{
+	font-weight: 600;
+    font-size: 14px;
+}
+
+.top-right-corner .line-dotted.italic{
+	font-style: italic;
+    font-weight: bold;
+}
+
+
+.content-body .bottom-line{
+	display: flex;
+	margin-bottom: 5px;
+}
+
+
+.content-body .bottom-line p{
+	display: inline-block;
+	margin: 0;
+}
+
+.content-body .title-line{
+	width: 18%;
+    font-weight:600;
+}
+
+.content-body .bottom-line .line-dotted{
+    margin-left: 5px;
+    bottom: 5px;
+    border-bottom: 1px dotted ;
+    font-size: 15px;
+    line-height: 24px;
+    height: 20px;
+    flex: 1 0 0;
+    width: 80%;
+}
+.content-body .line-dotted.bold{
+	font-weight: 600;
+}
+
+.content-body .line-dotted.italic{
+	font-style: italic;
+    font-weight: bold;
+}

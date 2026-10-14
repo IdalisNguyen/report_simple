@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- <record id="view_bank_statement_line_inherit_form" model="ir.ui.view">
+            <field name="name">bank.statement.line.inherit.form</field>
+            <field name="model">account.bank.statement.line</field>
+            <field name="inherit_id" ref="account.view_bank_statement_line_form"/>
+            <field name="arch" type="xml">
+	            <field name="transaction_type" position="before">
+	            	<field name="payment_id"/>
+	            	<field name="journal_id"/>
+	            	<field name="payer"/>
+                    <field name="suitable_journal_ids" invisible="1"/>
+	            </field>
+            </field>
+        </record> -->
+        <!-- <record id="view_bank_statement_inherit_form" model="ir.ui.view">
+            <field name="name">bank.statement.inherit.form</field>
+            <field name="model">account.bank.statement</field>
+            <field name="inherit_id" ref="account.view_bank_statement_form"/>
+            <field name="arch" type="xml">
+	            <xpath expr="//field[@name='amount_currency']" position="after">
+	            	<field name="show_print" invisible='1'/>
+	            	<button name="print_receipts_pay_slip" string="Cash Receipt &amp; Payment Voucher" type="object" icon="fa-print" attrs="{'invisible': [('show_print','=',False)]}"/>
+                </xpath>
+                <xpath expr="//tree//field[@name='partner_id']" position="after">
+                	<field name="payer"/>
+                </xpath>
+                
+                <xpath expr="//tree//field[@name='date']" position="before">
+                	<field name="number_sequence" readonly="True"/>
+                </xpath>
+                
+            </field>
+        </record> -->
+    </data>
+</odoo>
